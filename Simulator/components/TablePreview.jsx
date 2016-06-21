@@ -85,6 +85,7 @@ class TablePreview extends Component {
               Fetch Table Data
             </Button> :
             <Button
+              className="fetch-btn"
               disabled
               bsStyle="success"
             >

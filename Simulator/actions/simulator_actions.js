@@ -35,7 +35,7 @@ export const resetState = createAction('RESET_STATE', () => {
 export const resetPhaseState = createAction('RESET_PHASE_STATE');
 export const resetWdcAttrs = createAction('RESET_WDC_ATTRS');
 export const resetTables = createAction('RESET_TABLES');
-export const resetTableData = createAction('RESET_TABLE_Data');
+export const resetTableData = createAction('RESET_TABLE_DATA');
 
 
 // Thunks (and Composed Actions)

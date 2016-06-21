@@ -33,7 +33,7 @@ export default handleActions({
   RESET_STATE: (state, action) => action.payload,
   RESET_PHASE_STATE: (state) => ({
     ...state,
-    phaseInPropgress: false,
+    phaseInProgress: false,
     phaseSubmitCalled: false,
     phaseInitCallbackCalled: false,
   }),

@@ -80,6 +80,7 @@ describe('Mad Money Scaper', function(){
         return field.getAttribute("value");
       })
       .then(function(connectionName) {
+        driver.sleep(100);
         connectionName.should.be.equal(correctName);
         done();
       });

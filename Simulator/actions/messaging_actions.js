@@ -20,6 +20,7 @@ export function receiveMessage(payload) {
 
         case eventNames.LOADED: {
           dispatch(handleLoaded(version));
+          handleLoaded();
           break;
         }
 
@@ -192,13 +193,13 @@ export function handleAbortForAuth(errMsg) {
                      'use the "Start Auth Phase" to test ' +
                      'your WDC Auth Mode:';
     dispatch(simulatorActions.setPhaseInProgress(false));
-    dispatch(simulatorActions.closeSimulator());
+    dispatch(simulatorActions.closeSimulatorWindow());
     toastr.error(errMsg, toastTitle);
   };
 }
 
 // Send message thunks
-export function sendMessage(messageName, payload) {
+export function sendMessage(messageName, payload = {}) {
   return (dispatch, getState) => {
     // Construct payload and send info to whichever
     // window we are posting too
@@ -225,7 +226,7 @@ export function sendGetHeaders() {
   };
 }
 
-// Takes an array of tableuInfo/incValue paris
+// Takes an array of tableuInfo/incValue pairs
 export function sendGetData(tablesAndIncrementValues, isFreshFetch) {
   return (dispatch) => {
     if (isFreshFetch) {
