@@ -27,7 +27,11 @@ export const setTables = createAction('SET_TABLES');
 export const addTables = createAction('ADD_TABLES');
 
 // Reset Actions
-export const resetState = createAction('RESET_STATE');
+export const resetState = createAction('RESET_STATE', () => {
+  const wdcUrl = Cookie.get('lastUrl') || '../Examples/html/earthquakeUSGS.html';
+  return { ...consts.defaultState, wdcUrl };
+});
+
 export const resetPhaseState = createAction('RESET_PHASE_STATE');
 export const resetWdcAttrs = createAction('RESET_WDC_ATTRS');
 export const resetTables = createAction('RESET_TABLES');
@@ -71,7 +75,7 @@ export function startGatherDataPhase() {
 export function setWindowAsExternal() {
   return (dispatch, getState) => {
     const { wdcUrl } = getState();
-    const simulatorWindow = window.open(wdcUrl, 'simulator', consts.WINDOW_PROPS);
+    const simulatorWindow = window.open(wdcUrl, 'wdc', consts.WINDOW_PROPS);
     dispatch(setSimulatorWindow(simulatorWindow));
   };
 }
