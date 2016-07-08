@@ -7,7 +7,7 @@ import { defaultState } from '../utils/consts';
 // More info can be found here:
 // http://redux.js.org/docs/basics/Store.html
 
-let middlewares = [thunk];
+const middlewares = [thunk];
 
 // Uncomment to add redux logger to console, useful for debugging but slows down simulator
 // const createLogger = require(`redux-logger`);
@@ -18,6 +18,10 @@ let middlewares = [thunk];
 // https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd/related?hl=en
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f;
 
-const store = createStore(reducers, defaultState, compose(applyMiddleware(...middlewares), devTools));
+const store = createStore(
+  reducers,
+  defaultState,
+  compose(applyMiddleware(...middlewares), devTools)
+);
 
 export default store;

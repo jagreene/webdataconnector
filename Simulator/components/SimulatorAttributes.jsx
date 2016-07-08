@@ -1,6 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
+//----------------------Simulator Attributes---------------------//
+// Component which contains the UI element necessary to set the
+// state of wdcAttrs (connectionName, connectionData, username
+// password, and locale)
+//--------------------------------------------------------------//
+
 class SimulatorAttributes extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +50,7 @@ class SimulatorAttributes extends Component {
           />
           <ControlLabel> Password </ControlLabel>
           <FormControl
-            type="text"
+            type="password"
             disabled={this.props.disabled}
             label="Password"
             id="password"
@@ -77,7 +83,13 @@ class SimulatorAttributes extends Component {
 
 SimulatorAttributes.propTypes = {
   disabled: PropTypes.bool.isRequired,
-  wdcAttrs: PropTypes.object.isRequired,
+  wdcAttrs: PropTypes.shape({
+    connectionName: PropTypes.string.isRequired,
+    connectionData: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    locale: PropTypes.string.isRequired,
+  }).isRequired,
   setWdcAttrs: PropTypes.func.isRequired,
 };
 

@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import TablePreview from './TablePreview.jsx';
 
+//----------------------Data Tables---------------------//
+// Component which contains the tablePreviews for each
+// table
+//------------------------------------------------------//
+
 class DataTables extends Component {
   render() {
     let tablePreviewElements = [];

@@ -82,12 +82,13 @@ export function setWindowAsExternal() {
 // in the desktop version of the connector lifecycle
 export function setWindowAsGatherFrame(iframe) {
   return (dispatch) => {
-    if (!!iframe) {
-      dispatch(setSimulatorWindow(iframe.contentWindow));
-    }
+    dispatch(setSimulatorWindow(iframe.contentWindow));
   };
 }
 
+// Note that the simulatorWindow points to an external window in
+// the Interactive phase and the gather data iframe in the
+// Gather Data phase
 export function closeSimulatorWindow() {
   return (dispatch, getState) => {
     const { simulatorWindow } = getState();

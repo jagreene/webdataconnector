@@ -9,7 +9,8 @@ export function validateData(data) {
     for (i = 0; i < data.length; i++) {
       entry = data[i];
       if (!(validate.isArray(entry) || validate.isObject(entry))) {
-        console.error('Each entry within the array passed through table.appendRows must be an array or object.');
+        console.error('Each entry within the array passed ' +
+                      'through table.appendRows must be an array or object.');
         return false;
       }
     }

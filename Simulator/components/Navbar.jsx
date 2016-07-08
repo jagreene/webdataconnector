@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+//----------------------Navbar---------------------//
+// Component for the top navbar, purely presentational
+//-------------------------------------------------//
+
 class Navbar extends Component {
   render() {
     return (

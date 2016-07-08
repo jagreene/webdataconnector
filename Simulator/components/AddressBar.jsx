@@ -6,6 +6,11 @@ import {
   ControlLabel,
   Button } from 'react-bootstrap';
 
+//----------------------Address Bar---------------------//
+// Component with the UI elements necessary to update the
+// state of wdcUrl and reset the state of the simulator
+//------------------------------------------------------//
+
 class AddressBar extends Component {
   constructor(props) {
     super(props);

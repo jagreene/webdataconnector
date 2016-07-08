@@ -4,10 +4,15 @@ import _ from 'underscore';
 
 import CollapsibleTable from './CollapsibleTable.jsx';
 
+//----------------------Table Preview---------------------//
+// Component which contains a preview of both the metadata
+// and data tables a connector returns
+//-------------------------------------------------------//
+
 class TablePreview extends Component {
   constructor(props) {
     super(props);
-    this.MAX_ROWS = Infinity; // 5000;
+    this.MAX_ROWS = Infinity;
     this.METADATA_HEADER = [
       'ID',
       'TYPE',
@@ -35,7 +40,7 @@ class TablePreview extends Component {
     let columnTableHeader = this.METADATA_HEADER;
     let columnElements = this.getMetadataElements(tableInfo);
 
-    // Prep table of actual data for this TableuPreview
+    // Prep table of actual data for this TablePreview
     let dataTableHeader = this.getDataHeader(tableInfo);
     let dataElements = this.getDataElements(tableData, dataTableHeader);
 
@@ -129,14 +134,12 @@ class TablePreview extends Component {
   getMetadataElements(tableInfo) {
     let columnTableRowKey = 1;
     const columnElements = tableInfo.columns.map((columnInfo) => {
-      let row = [];
+      const row = [];
       let cells = [];
       row[0] = columnInfo.id;
       row[1] = columnInfo.dataType;
       row[2] = (columnInfo.alias) ? columnInfo.alias : '-';
       row[3] = (columnInfo.description) ? columnInfo.description : '-';
-      row[4] = (columnInfo.isPrimaryKey) ? columnInfo.isPrimaryKey : '-';
-      row[5] = (columnInfo.foreignKey) ? columnInfo.foreignKey : '-';
 
       cells = row.map((cellVal) =>
         <td key={columnTableRowKey++}> {cellVal} </td>

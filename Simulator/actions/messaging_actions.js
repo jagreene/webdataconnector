@@ -153,7 +153,7 @@ export function handleDataCallback(tableName, data) {
     // if data is valid, add it to the appropriate tables object in the store
     if (validateData(data)) {
       const { tables } = getState();
-      let newTables = Object.assign({}, tables);
+      const newTables = Object.assign({}, tables);
       newTables[tableName].data = newTables[tableName].data.concat(data);
       dispatch(simulatorActions.setTables(newTables));
     } else {
@@ -165,8 +165,7 @@ export function handleDataCallback(tableName, data) {
 export function handleDataDoneCallback() {
   return (dispatch) => {
     // Tell the wdc to shutdown now that we have our data
-    dispatch(simulatorActions.setPhaseInProgress(false));
-    dispatch(sendShutdown);
+    dispatch(sendShutdown());
   };
 }
 
@@ -189,9 +188,12 @@ export function handleAbort(errMsg) {
 export function handleAbortForAuth(errMsg) {
   return (dispatch) => {
     // Need auth, close the simulator, tell the user
+    const toastTitle = 'The WDC has been aborted for auth, ' +
+                     'use the "Start Auth Phase" to test ' +
+                     'your WDC Auth Mode:';
     dispatch(simulatorActions.setPhaseInProgress(false));
     dispatch(simulatorActions.closeSimulator());
-    toastr.error(errMsg, 'The WDC has been aborted for auth, use the "Start Auth Phase" to test your WDC Auth Mode:');
+    toastr.error(errMsg, toastTitle);
   };
 }
 
@@ -206,10 +208,10 @@ export function sendMessage(messageName, payload) {
       msgData: payload,
       props: wdcAttrs,
     });
+    simulatorWindow.postMessage(messagePayload, '*');
 
-    if (simulatorWindow) {
-      simulatorWindow.postMessage(messagePayload, '*');
-    }
+    // if (simulatorWindow) {
+    // }
   };
 }
 

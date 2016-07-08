@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Button, Checkbox } from 'react-bootstrap';
 
+//----------------------Start Connector Group---------------------//
+// Component which Buttons to Start Both the Interactive
+// and Auth Phases of the WDC.
+//---------------------------------------------------------------//
+
 class StartConnectorGroup extends Component {
   constructor(props) {
     super(props);

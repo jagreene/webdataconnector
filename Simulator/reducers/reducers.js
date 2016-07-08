@@ -50,7 +50,7 @@ export default handleActions({
   }),
   RESET_TABLES: (state) => ({ ...state, tables: {} }),
   RESET_TABLE_DATA: (state, action) => {
-    let { tables } = state;
+    const { tables } = state;
     tables[action.payload].data = [];
     return { ...state, tables };
   },

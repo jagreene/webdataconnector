@@ -25,6 +25,12 @@ import GatherDataFrame from './GatherDataFrame';
 // Utilities
 import * as consts from '../utils/consts';
 
+//----------------------App---------------------//
+// Main Component which is provided the state of
+// the store acts as a container for the rest of
+// the components
+//----------------------------------------------//
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +47,11 @@ class App extends Component {
     }, false);
 
     // Dispatch Actions on Events and Bind This context
-    // (in es6 classes the this context of event handlers is not
-    // auto bound, it is done in the constructor to minimize unnecessary rerenders)
-    // Bind Wdc Actions
+    // (in es6 classes the `this` context of event handlers is not
+    // auto bound, it is done in the constructor using arrow functions
+    // to minimize unnecessary rerenders)
+
+    //Bind WDC Actions
     this.setWdcUrl = (url) =>
       dispatch(simulatorActions.setWdcUrl(url));
     this.setWdcShouldFetchAllTables = (should) =>
@@ -72,8 +80,10 @@ class App extends Component {
 
   render() {
     // compute variables needed for render
-    const interactivePhaseInProgress = this.props.phaseInProgress && this.props.currentPhase === consts.phases.INTERACTIVE;
-    const dataGatheringPhaseInProgress = this.props.phaseInProgress && this.props.currentPhase === consts.phases.GATHER_DATA;
+    const interactivePhaseInProgress = this.props.phaseInProgress &&
+                                       this.props.currentPhase === consts.phases.INTERACTIVE;
+    const dataGatheringPhaseInProgress = this.props.phaseInProgress &&
+                                         this.props.currentPhase === consts.phases.GATHER_DATA;
 
     const inDataGatherPhase = this.props.currentPhase === consts.phases.GATHER_DATA;
 

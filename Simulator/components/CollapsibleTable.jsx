@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { Table, Collapse, Button } from 'react-bootstrap';
 
+//----------------------Collapsible Table---------------------//
+// Component which wraps the react bootstrap table to creat
+// a table with the UI elements necessary to collapse it.
+//-----------------------------------------------------------//
+
 class CollapsibleTable extends Component {
   constructor(props) {
     super(props);
