@@ -78,6 +78,7 @@ class TablePreview extends Component {
         {
           !this.props.fetchInProgress ?
             <Button
+              className="fetch-btn"
               onClick={this.freshFetch}
               bsStyle="success"
             >
@@ -93,6 +94,7 @@ class TablePreview extends Component {
         {
           canIncrementalUpdate ?
             <Button
+              className="incremental-fetch-btn"
               onClick={this.incrementalRefresh}
               style={{ marginLeft: '4px' }}
             >
@@ -145,9 +147,15 @@ class TablePreview extends Component {
         <td key={columnTableRowKey++}> {cellVal} </td>
       );
 
-      return <tr key={columnTableRowKey++}>{cells}</tr>;
+      return (
+        <tr
+          className="metadata-row"
+          key={columnTableRowKey++}
+        >
+          {cells}
+        </tr>
+      );
     });
-
     return columnElements;
   }
 
@@ -183,7 +191,14 @@ class TablePreview extends Component {
           }
           return <td key={dataTableColKey++}> {String(cellValue)} </td>;
         });
-        return <tr key={dataTableRowKey++}>{cells}</tr>;
+        return (
+          <tr
+            className="data-row"
+            key={dataTableRowKey++}
+          >
+            {cells}
+          </tr>
+        );
       });
     }
     return dataElements;

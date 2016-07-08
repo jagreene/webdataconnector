@@ -209,9 +209,6 @@ export function sendMessage(messageName, payload) {
       props: wdcAttrs,
     });
     simulatorWindow.postMessage(messagePayload, '*');
-
-    // if (simulatorWindow) {
-    // }
   };
 }
 
